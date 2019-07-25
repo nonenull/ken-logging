@@ -18,7 +18,7 @@ func isDirExists(path string) bool {
 
 func checkPath(filePath string) {
 	if !isDirExists(filePath) {
-		_ = os.MkdirAll(filePath, 0666)
+		_ = os.MkdirAll(filepath.Dir(filePath), 0666)
 	}
 }
 

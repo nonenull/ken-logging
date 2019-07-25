@@ -16,6 +16,7 @@ func (self *Handler) createLog() {
 	if self.filename == "" {
 		self.logger = log.New(os.Stdout, "", log.LstdFlags|log.Lshortfile)
 	} else {
+		checkPath(self.filename)
 		logFile, err := os.OpenFile(self.filename, os.O_RDWR|os.O_CREATE|os.O_APPEND, os.ModePerm)
 		if err != nil {
 			log.Fatal("open log file error: ", err)
