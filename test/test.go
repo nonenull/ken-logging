@@ -7,41 +7,8 @@ import (
 var logger *logging.Logger
 
 func init() {
-	conf := `
-{
-  "handlers": {
-    "console": {
-      "level": "DEBUG"
-    },
-    "omsFile": {
-      "level": "INFO",
-      "filename": "oms.log"
-    },
-    "celery": {
-      "level": "INFO",
-      "filename": "celery.log"
-    },
-    "tasks": {
-      "level": "INFO",
-      "filename": "tasks.log"
-    },
-    "db_handle": {
-      "level": "INFO",
-      "filename": "db.log"
-    }
-  },
-  "loggers": {
-    "root": {
-      "handlers": [
-        "console",
-        "omsFile"
-      ],
-      "level": "DEBUG"
-    }
-  }
-}
-`
-	logging.SetGlobalConf(conf)
+	logging.SetGlobalConfFormFile("test/log.yml")
+	//logging.SetGlobalConfFormFile("test/log.json")
 	logger = logging.GetLogger("test")
 }
 

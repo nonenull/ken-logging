@@ -1,0 +1,13 @@
+handlers:
+  console:
+    level: DEBUG
+  omsFile:
+    level: INFO
+    filename: oms.log
+
+loggers:
+  root:
+    level: DEBUG
+    handlers:
+      - console
+      - omsFile

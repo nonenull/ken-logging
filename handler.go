@@ -33,9 +33,8 @@ func (self *Handler) Output(level string, s string) error {
 
 func NewHandler(handlerConf *HandlerConf) *Handler {
 	h := &Handler{
-		level:     handlerConf.Level,
-		formatter: handlerConf.Formatter,
-		filename:  handlerConf.Filename,
+		level:    handlerConf.Level,
+		filename: handlerConf.Filename,
 	}
 	h.createLog()
 	return h

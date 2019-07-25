@@ -1,0 +1,20 @@
+{
+  "handlers": {
+    "console": {
+      "level": "DEBUG"
+    },
+    "omsFile": {
+      "level": "INFO",
+      "filename": "oms.log"
+    }
+  },
+  "loggers": {
+    "root": {
+      "handlers": [
+        "console",
+        "omsFile"
+      ],
+      "level": "DEBUG"
+    }
+  }
+}
