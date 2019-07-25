@@ -1,0 +1,52 @@
+{
+  "handlers": {
+    "console": {
+      "level": "DEBUG"
+    },
+    "omsFile": {
+      "level": "INFO",
+      "filename": "oms.log"
+    },
+    "celery": {
+      "level": "INFO",
+      "filename": "celery.log"
+    },
+    "tasks": {
+      "level": "INFO",
+      "filename": "tasks.log"
+    },
+    "db_handle": {
+      "level": "INFO",
+      "filename": "db.log"
+    }
+  },
+  "loggers": {
+    "root": {
+      "handlers": [
+        "console",
+        "omsFile"
+      ],
+      "level": "DEBUG"
+    },
+    "celery": {
+      "handlers": [
+        "celery",
+        "console"
+      ],
+      "level": "DEBUG"
+    },
+    "tasks": {
+      "handlers": [
+        "tasks",
+        "console"
+      ],
+      "level": "DEBUG"
+    },
+    "django.db": {
+      "handlers": [
+        "db_handle"
+      ],
+      "level": "INFO"
+    }
+  }
+}
