@@ -17,6 +17,7 @@ type LoggerConf struct {
 
 type HandlerConf struct {
 	Level    string `yaml:"level"`
+	Console  bool   `yaml:"console"`
 	Filename string `yaml:"filename"`
 }
 
