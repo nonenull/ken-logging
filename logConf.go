@@ -8,7 +8,26 @@ import (
 	"path"
 )
 
-var GlobalConf = &LogConf{}
+var GlobalConf = &LogConf{
+	map[string]*LoggerConf{
+		"root": {
+			Level: "DEBUG",
+			Handlers: []string{
+				"console",
+				"root",
+			},
+		},
+	},
+	map[string]*HandlerConf{
+		"console": {
+			Level: "DEBUG",
+		},
+		"root": {
+			Level:    "DEBUG",
+			Filename: "logs/root.log",
+		},
+	},
+}
 
 type LoggerConf struct {
 	Handlers []string `yaml:"handlers"`
@@ -44,7 +63,9 @@ func SetGlobalConf(confType string, configStr []byte) {
 }
 
 func SetGlobalConfFormFile(filePath string) {
-	conf, err := ioutil.ReadFile(path.Join(GetCurrentDirectory(), filePath))
+	pathStr := path.Join(GetCurrentDirectory(), filePath)
+	log.Println("pathStr=== ", pathStr)
+	conf, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		log.Fatal("open log config file error: ", err)
 	}
