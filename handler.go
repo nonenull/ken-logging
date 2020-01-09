@@ -8,6 +8,7 @@ import (
 
 type Handler struct {
 	Logger   *log.Logger
+	name     string
 	level    string
 	console  bool
 	filename string
@@ -35,11 +36,12 @@ func (self *Handler) Output(level string, s string) error {
 	if LevelMap[level] < LevelMap[self.level] {
 		return nil
 	}
-	return self.Logger.Output(4, s)
+	return self.Logger.Output(4, self.name+" "+s)
 }
 
-func NewHandler(handlerConf *HandlerConf) *Handler {
+func NewHandler(name string, handlerConf *HandlerConf) *Handler {
 	h := &Handler{
+		name:     name,
 		level:    handlerConf.Level,
 		console:  handlerConf.Console,
 		filename: handlerConf.Filename,

@@ -17,6 +17,12 @@ var GlobalConf = &LogConf{
 				"root",
 			},
 		},
+		"test": {
+			Level: "INFO",
+			Handlers: []string{
+				"console",
+			},
+		},
 	},
 	map[string]*HandlerConf{
 		"console": {
@@ -62,7 +68,7 @@ func SetGlobalConf(confType string, configStr []byte) {
 	}
 }
 
-func SetGlobalConfFormFile(filePath string) {
+func SetGlobalConfFormFile(filePath string) error {
 	pathStr := path.Join(GetCurrentDirectory(), filePath)
 	log.Println("pathStr=== ", pathStr)
 	conf, err := ioutil.ReadFile(filePath)
@@ -74,4 +80,9 @@ func SetGlobalConfFormFile(filePath string) {
 		fileSuffix = ".yaml"
 	}
 	SetGlobalConf(fileSuffix[1:], conf)
+	return nil
+}
+
+func SetGlobalConfFormData(logConf *LogConf) {
+	GlobalConf = logConf
 }

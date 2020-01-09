@@ -25,7 +25,6 @@ func (self *Logger) OutPut(curLevel string, v ...interface{}) {
 		return
 	}
 	prefix := "[" + curLevel + "] "
-
 	formatStr := fmt.Sprintf("%v", v[0])
 	var content string
 	if strings.Contains(formatStr, "%") {
@@ -69,7 +68,7 @@ func NewLogger(name string, loggerConf *LoggerConf) *Logger {
 	var handles []*Handler
 	for _, v := range loggerConf.Handlers {
 		h := GlobalConf.Handlers[v]
-		handler := NewHandler(h)
+		handler := NewHandler(name, h)
 		handles = append(handles, handler)
 	}
 
