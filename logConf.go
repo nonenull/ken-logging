@@ -30,7 +30,7 @@ var GlobalConf = &LogConf{
 		},
 		"root": {
 			Level:    "DEBUG",
-			Filename: "logs/root.log",
+			Filename: "../logs/root.log",
 		},
 	},
 }
