@@ -69,8 +69,6 @@ func SetGlobalConf(confType string, configStr []byte) {
 }
 
 func SetGlobalConfFormFile(filePath string) error {
-	pathStr := path.Join(GetCurrentDirectory(), filePath)
-	log.Println("pathStr=== ", pathStr)
 	conf, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		log.Fatal("open log config file error: ", err)
