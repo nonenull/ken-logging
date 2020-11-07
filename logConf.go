@@ -84,3 +84,6 @@ func SetGlobalConfFormFile(filePath string) error {
 func SetGlobalConfFormData(logConf *LogConf) {
 	GlobalConf = logConf
 }
+func init(){
+	SetGlobalConfFormData(GlobalConf)
+}
